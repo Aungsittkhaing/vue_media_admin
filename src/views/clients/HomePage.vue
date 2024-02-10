@@ -101,7 +101,7 @@
                       >
                         <div class="single-what-news mb-100">
                           <div class="what-img">
-                            <img src="/assets/img/news/whatNews1.jpg" alt="" />
+                            <img :src="post.image" alt="" />
                           </div>
                           <div class="what-cap">
                             <span class="color1">{{ post.title }}</span>
