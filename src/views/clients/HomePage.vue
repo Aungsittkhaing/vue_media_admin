@@ -13,7 +13,7 @@
             <div class="col-lg-9 col-md-9">
               <div class="properties__button">
                 <!--Nav Button  -->
-                <nav>
+                <nav class="d-flex justify-content-between">
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a
                       class="nav-item nav-link active"
@@ -33,48 +33,23 @@
                       role="tab"
                       aria-controls="nav-profile"
                       aria-selected="false"
-                      >Lifestyle</a
+                      v-for="(category, index) in categoryLists"
+                      :key="index"
+                      >{{ category.title }}</a
                     >
-                    <a
-                      class="nav-item nav-link"
-                      id="nav-contact-tab"
-                      data-toggle="tab"
-                      href="details.htmlnav-contact"
-                      role="tab"
-                      aria-controls="nav-contact"
-                      aria-selected="false"
-                      >Travel</a
-                    >
-                    <a
-                      class="nav-item nav-link"
-                      id="nav-last-tab"
-                      data-toggle="tab"
-                      href="details.htmlnav-last"
-                      role="tab"
-                      aria-controls="nav-contact"
-                      aria-selected="false"
-                      >Fashion</a
-                    >
-                    <a
-                      class="nav-item nav-link"
-                      id="nav-Sports"
-                      data-toggle="tab"
-                      href="details.htmlnav-nav-Sport"
-                      role="tab"
-                      aria-controls="nav-contact"
-                      aria-selected="false"
-                      >Sports</a
-                    >
-                    <a
-                      class="nav-item nav-link"
-                      id="nav-technology"
-                      data-toggle="tab"
-                      href="details.htmlnav-techno"
-                      role="tab"
-                      aria-controls="nav-contact"
-                      aria-selected="false"
-                      >Technology</a
-                    >
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="searchKey"
+                      v-on:keyup.enter="search()"
+                    />
+                    <i
+                      class="fas fa-search special-tag mt-2 ml-2"
+                      style="font-size: 25px"
+                      @click="search()"
+                    ></i>
                   </div>
                 </nav>
                 <!--End Nav Button  -->
