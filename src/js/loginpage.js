@@ -1,4 +1,6 @@
 import axios from "axios";
+import { mapGetters } from "vuex";
+
   export default {
         name : 'LoginPage',
         data() {
@@ -8,6 +10,9 @@ import axios from "axios";
                     password : ""
                 }
             }
+        },
+        computed: {
+            ...mapGetters(['storageToken', 'storageUserData'])
         },
         methods: {
             home(){
@@ -25,11 +30,22 @@ import axios from "axios";
                     if (response.data.token == null) {
                         console.log("There is no users");
                     }else{
-                        console.log("Login Success");  
+                        this.storeUserInfo(response);
+                        console.log('token success');
                     }
                     
                 }).catch((error) => console.log(error)
                 );
+            },
+            storeUserInfo(response){
+                this.$store.dispatch('setToken', response.data.token);
+                this.$store.dispatch('setUserToken', response.data.user);
+                console.log('Token store success');   
+            },
+            check(){
+                console.log(this.storageToken);  
+                console.log(this.storageUserData);
+                
             }
         },
     }

@@ -25,6 +25,7 @@
       />
     </div>
     <button class="btn bg-info" @click="accountLogin()">Login</button>
+    <button class="btn btn-primary" @click="check()">Check</button>
   </div>
 </template>
 
