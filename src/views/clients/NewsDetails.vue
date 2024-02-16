@@ -46,29 +46,8 @@
               </div>
               <div class="social-share">
                 <div class="section-tittle">
-                  <h2 class="text-black-50">Share</h2>
-                  <ul>
-                    <li>
-                      <a href="#"
-                        ><img src="/assets/img/news/icon-ins.png" alt=""
-                      /></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><img src="/assets/img/news/icon-fb.png" alt=""
-                      /></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><img src="/assets/img/news/icon-tw.png" alt=""
-                      /></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><img src="/assets/img/news/icon-yo.png" alt=""
-                      /></a>
-                    </li>
-                  </ul>
+                  <i class="fas fa-eye mt-1 mr-1"></i>
+                  <p>{{ viewCount }}</p>
                 </div>
               </div>
             </div>

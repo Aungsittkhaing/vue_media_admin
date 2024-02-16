@@ -1,7 +1,11 @@
 <template>
   <div class="d-flex justify-content-end">
-    <a class="btn bg-primary btn-sm mr-10" @click="home()">Home</a>
-    <a class="btn bg-info btn-sm" @click="login()">Login</a>
+    <a class="btn bg-info btn-sm mr-2" v-if="!tokenStatus" @click="login()"
+      >Login</a
+    >
+    <a class="btn bg-danger btn-sm" v-if="tokenStatus" @click="logout()"
+      >LogOut</a
+    >
   </div>
   <!-- Whats New Start -->
   <section class="whats-news-area pt-50 pb-20">
@@ -74,34 +78,43 @@
                   aria-labelledby="nav-home-tab"
                 >
                   <div class="whats-news-caption">
-                    <div class="row">
-                      <div
-                        class="mx-auto mt-5 d-flex"
-                        style="height: 200px"
-                        v-if="postLists.length == 0"
+                    <div v-if="!tokenStatus">
+                      <h2
+                        class="text-white bg-danger d-flex justify-content-center my-5 p-5 rounded shadow"
                       >
-                        <h1 class="text-danger">There is no data</h1>
-                      </div>
-                      <div
-                        class="col-lg-6 col-md-6"
-                        v-for="(post, index) in postLists"
-                        :key="index"
-                        v-else-if="postLists.length != 0"
-                      >
+                        you don't have permission
+                      </h2>
+                    </div>
+                    <div v-else>
+                      <div class="row">
                         <div
-                          class="single-what-news mb-100"
-                          @click="newsDetails(post.post_id)"
+                          class="mx-auto mt-5 d-flex"
+                          style="height: 200px"
+                          v-if="postLists.length == 0"
                         >
-                          <div class="what-img">
-                            <img :src="post.image" alt="" />
-                          </div>
-                          <div class="what-cap">
-                            <span class="color1">{{ post.title }}</span>
-                            <h4>
-                              <a>{{
-                                post.description.substring(0, 50) + "..."
-                              }}</a>
-                            </h4>
+                          <h1 class="text-danger">There is no data</h1>
+                        </div>
+                        <div
+                          class="col-lg-6 col-md-6"
+                          v-for="(post, index) in postLists"
+                          :key="index"
+                          v-else-if="postLists.length != 0"
+                        >
+                          <div
+                            class="single-what-news mb-100"
+                            @click="newsDetails(post.post_id)"
+                          >
+                            <div class="what-img">
+                              <img :src="post.image" alt="" />
+                            </div>
+                            <div class="what-cap">
+                              <span class="color1">{{ post.title }}</span>
+                              <h4>
+                                <a>{{
+                                  post.description.substring(0, 50) + "..."
+                                }}</a>
+                              </h4>
+                            </div>
                           </div>
                         </div>
                       </div>

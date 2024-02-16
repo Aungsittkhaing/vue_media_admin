@@ -1,9 +1,11 @@
 <template>
   <div class="d-flex justify-content-end">
-    <a class="btn bg-primary btn-sm mr-10" @click="home()">Home</a>
     <a class="btn bg-info btn-sm" @click="login()">Login</a>
   </div>
   <div class="container my-5 col-5 p-5 shadow-sm">
+    <div class="alert alert-danger" role="alert" v-if="userStatus">
+      The credential do not match!
+    </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input
@@ -25,7 +27,7 @@
       />
     </div>
     <button class="btn bg-info" @click="accountLogin()">Login</button>
-    <button class="btn btn-primary" @click="check()">Check</button>
+    <!-- <button class="btn btn-primary" @click="check()">Check</button> -->
   </div>
 </template>
 

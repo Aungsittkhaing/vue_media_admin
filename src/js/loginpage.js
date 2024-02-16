@@ -8,7 +8,9 @@ import { mapGetters } from "vuex";
                 userData : {
                     email : "",
                     password : ""
-                }
+                },
+                tokenStatus : false,
+                userStatus : false
             }
         },
         computed: {
@@ -25,13 +27,21 @@ import { mapGetters } from "vuex";
                   name : 'loginPage'
                 })
             },
+            logout(){
+                this.$store.dispatch('setToken', null);
+                console.log(this.storageToken);
+                this.login()    
+            },
             accountLogin(){
                 axios.post('http://127.0.0.1:8000/api/user/login', this.userData).then((response) => {
                     if (response.data.token == null) {
+                        this.userStatus = true;
                         console.log("There is no users");
                     }else{
+                        this.userStatus = false;
                         this.storeUserInfo(response);
                         console.log('token success');
+                        this.home();
                     }
                     
                 }).catch((error) => console.log(error)
