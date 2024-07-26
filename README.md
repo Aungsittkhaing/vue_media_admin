@@ -1,6 +1,6 @@
 # vue_media_admin
 
-This template should help get you started developing with Vue 3 in Vite.
+This template should help get you started developing with Vue 3 in Vite using laravel for backend.
 
 ## Recommended IDE Setup
 
